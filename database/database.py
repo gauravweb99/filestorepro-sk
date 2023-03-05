@@ -1,4 +1,6 @@
-import pymongo, os
+
+import pymongo
+import os
 from config import DB_URI, DB_NAME
 
 
@@ -9,25 +11,18 @@ database = dbclient[DB_NAME]
 user_data = database['users']
 
 
+async def present_user(user_id: int, bot_username: str = False):
+    return bool(user_data.find_one({'_id': user_id, 'bot_username': bot_username}))
 
-async def present_user(user_id : int):
-    found = user_data.find_one({'_id': user_id})
-    if found:
-        return True
-    else:
-        return False
 
-async def add_user(user_id: int):
-    user_data.insert_one({'_id': user_id})
+async def add_user(user_id: int, bot_username: str = False):
+    user_data.insert_one({'_id': user_id, 'bot_username': bot_username})
     return
 
+
 async def full_userbase():
-    user_docs = user_data.find()
-    user_ids = []
-    for doc in user_docs:
-        user_ids.append(doc['_id'])
-        
-    return user_ids
+    return user_data.find()
+
 
 async def del_user(user_id: int):
     user_data.delete_one({'_id': user_id})

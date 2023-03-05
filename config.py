@@ -2,7 +2,8 @@
 import os
 import logging
 from logging.handlers import RotatingFileHandler
-
+from dotenv import load_dotenv
+load_dotenv()
 
 
 #Bot token @Botfather
@@ -82,3 +83,10 @@ logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)
+
+
+MULITPLE_BOT_TOKENS = list(os.environ.get("MULITPLE_BOT_TOKENS", "").split())
+
+MULTIPLE_BOT_MODE = len(MULITPLE_BOT_TOKENS) > 1
+
+MULITPLE_BOT_TOKENS.append(TG_BOT_TOKEN)

@@ -14,7 +14,7 @@ name =""" ❤️ hii dev """
 
 
 class Bot(Client):
-    def __init__(self):
+    def __init__(self, bot_token):
         super().__init__(
             name="Bot",
             api_hash=API_HASH,
@@ -23,7 +23,8 @@ class Bot(Client):
                 "root": "plugins"
             },
             workers=TG_BOT_WORKERS,
-            bot_token=TG_BOT_TOKEN
+            bot_token=bot_token,
+            in_memory=True
         )
         self.LOGGER = LOGGER
 
@@ -57,14 +58,14 @@ class Bot(Client):
             sys.exit()
 
         self.set_parse_mode(ParseMode.HTML)
-        self.LOGGER(__name__).info(f"😍😎😋 Bot Running..!")
+        self.LOGGER(__name__).info("😍😎😋 Bot Running..!")
         self.LOGGER(__name__).info(f""" \n\n   ❤️ Gaurav jatt """)
         self.username = usr_bot_me.username
         #web-response
-        app = web.AppRunner(await web_server())
-        await app.setup()
-        bind_address = "0.0.0.0"
-        await web.TCPSite(app, bind_address, PORT).start()
+        # app = web.AppRunner(await web_server())
+        # await app.setup()
+        # bind_address = "0.0.0.0"
+        # await web.TCPSite(app, bind_address, PORT).start()
 
     async def stop(self, *args):
         await super().stop()
