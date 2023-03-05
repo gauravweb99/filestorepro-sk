@@ -1,7 +1,3 @@
-#(©)DollyBots
-
-
-
 
 import os
 import logging

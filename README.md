@@ -23,13 +23,10 @@
 
 #### Deploy in your VPS
 ````bash
-$ git clone https://github.com/DollyBots/FileSharing4xBot
+$ git clone repo link
 $ cd FileSharing4xBot
 $ pip3 install -r requirements.txt
 $ python3 main.py
 ````
 
 
-##
-
-   **Star this Repo if you Liked it ⭐⭐⭐ | @DollyBots**
