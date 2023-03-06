@@ -3,8 +3,10 @@ from bot import Bot
 from config import MULITPLE_BOT_TOKENS
 from nest_asyncio import apply
 from pyrogram import idle
+from weblive import weblive
 
 
+weblive()
 apply()
 
 if __name__ == "__main__":
